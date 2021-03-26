@@ -4,12 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import fastClick from 'fastclick'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'styles/reset.css'
 import 'styles/border.css' // 因為移動端的分辨率會導致邊框象素增大，所以要修正
 import 'styles/iconfont.css' // 因為移動端的分辨率會導致邊框象素增大，所以要修正
+import 'swiper/swiper-bundle.css'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
+Vue.use(VueAwesomeSwiper)
 
 /* eslint-disable no-new */
 new Vue({
