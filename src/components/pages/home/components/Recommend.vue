@@ -2,7 +2,7 @@
   <div>
     <div class="title">熱銷推薦</div>
     <ul>
-      <li class="item border-bottom" v-for="item of recommendList" :key="item.id"> <!--border-bottom為1像素邊框-->
+      <li class="item border-bottom" v-for="item of list" :key="item.id"> <!--border-bottom為1像素邊框-->
         <img class="item-img" :src="item.imgUrl"/>
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -20,25 +20,11 @@
 <script>
 export default {
   name: 'HomeRecommend',
+  props: {
+    list: Array
+  },
   data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        imgUrl: '//imgs.qunarzz.com/p/p48/201302/28/bc44faa497db0dcf93835fbb.jpg_256x160_0ba13461.jpg',
-        title: '北京故宮',
-        desc: '世界五大宮之首，穿越與您近在咫尺'
-      }, {
-        id: '0002',
-        imgUrl: '//imgs.qunarzz.com/p/p48/201302/28/bc44faa497db0dcf93835fbb.jpg_256x160_0ba13461.jpg',
-        title: '北京故宮',
-        desc: '世界五大宮之首，穿越與您近在咫尺'
-      }, {
-        id: '0006',
-        imgUrl: '//imgs.qunarzz.com/p/p48/201302/28/bc44faa497db0dcf93835fbb.jpg_256x160_0ba13461.jpg',
-        title: '北京故宮',
-        desc: '世界五大宮之首，穿越與您近在咫尺'
-      }]
-    }
+    return {}
   }
 }
 </script>

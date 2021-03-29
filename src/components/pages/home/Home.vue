@@ -1,10 +1,10 @@
 <template>
   <div>
-    <HomeHeader></HomeHeader>
-    <HomeSwiper></HomeSwiper>
-    <HomeIcons></HomeIcons>
-    <HomeRecommend></HomeRecommend>
-    <HomeWeekend></HomeWeekend>
+    <HomeHeader :city="city"></HomeHeader>
+    <HomeSwiper :list="swiperList"></HomeSwiper>
+    <HomeIcons :list="iconList"></HomeIcons>
+    <HomeRecommend :list="recommendList"></HomeRecommend>
+    <HomeWeekend :list="weekendList"></HomeWeekend>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
+import axios from 'axios'
 
 export default {
   name: 'Home',
@@ -23,6 +24,35 @@ export default {
     HomeIcons,
     HomeRecommend,
     HomeWeekend
+  },
+  mounted () {
+    this.getHomeInfo()
+  },
+  data () {
+    return {
+      city: '',
+      swiperList: [],
+      iconList: [],
+      recommendList: [],
+      weekendList: []
+    }
+  },
+  methods: {
+    getHomeInfo () {
+      axios.get('/api/index.json') // 網址設定放於config/index.js的proxyTable中
+        .then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc (res) {
+      res = res.data
+
+      if (res.ret && res.data) {
+        this.city = res.data.city
+        this.swiperList = res.data.swiperList
+        this.iconList = res.data.iconList
+        this.recommendList = res.data.recommendList
+        this.weekendList = res.data.weekendList
+      }
+    }
   }
 }
 </script>
