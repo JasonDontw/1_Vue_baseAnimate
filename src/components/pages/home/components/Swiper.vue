@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang='stylus' socped>
+<style lang='stylus' scoped>
   .swiper-button-prev, .swiper-button-next {
     --swiper-theme-color: #eee;
   }

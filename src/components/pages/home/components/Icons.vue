@@ -74,13 +74,14 @@ export default {
 }
 </script>
 
-<style lang='stylus' socped>
+<style lang='stylus' scoped>
   @import '~styles/varibles.styl'
   @import '~styles/mixins.styl'
-
-  .icons,.swiper-container
+  .icons .swiper-container
     height: 0
     padding-bottom: 50%
+  .icons
+    margin-top: .1rem
     .icon
       position: relative
       overflow: hidden
