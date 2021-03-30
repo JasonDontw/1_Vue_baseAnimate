@@ -7,9 +7,6 @@
 <script>
 export default {
   name: 'CitySearch',
-  props: {
-
-  }
 }
 </script>
 
