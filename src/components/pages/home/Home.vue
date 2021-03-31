@@ -29,7 +29,7 @@ export default {
     this.lastCity = this.$store.state.city
     this.getHomeInfo()
   },
-  activated () { //用於從新加載被Keep-alive的資料
+  activated () { // 用於從新加載被Keep-alive的資料
     if (this.lastCity !== this.$store.state.city) {
       this.lastCity = this.$store.state.city
       this.getHomeInfo()
