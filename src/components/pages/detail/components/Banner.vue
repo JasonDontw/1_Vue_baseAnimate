@@ -1,22 +1,52 @@
 <template>
-  <div class="banner">
-    <img class="banner-img" src="https://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg"/>
-
-    <div class="banner-info">
-      <div class="banner-tittle">大連聖亞海洋世界4A景區</div>
-      <div class="banner-number">
-        <span class="iconfont banner-icon">&#xe629;</span>
-        39
+  <div>
+    <div class="banner" :options="swiperOptions" @click="handleBannerClick">
+      <img class="banner-img" src="https://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg"/>
+      <div class="banner-info">
+        <div class="banner-tittle">大連聖亞海洋世界4A景區</div>
+        <div class="banner-number">
+          <span class="iconfont banner-icon">&#xe629;</span>
+          39
+        </div>
       </div>
     </div>
-
+    <CommonGallary
+      :imgs="imgs"
+      v-show="showGallary"
+      @close="handleGallarClick"
+    ></CommonGallary>
   </div>
 </template>
 
 <script>
+import CommonGallary from 'common/gallary/Gallary'
 
 export default {
-  name: 'DetailBanner'
+  name: 'DetailBanner',
+  data () {
+    return {
+      showGallary: false,
+      imgs: [
+        'https://imgs.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg',
+        'https://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_800x800_9ef05ee7.jpg'
+      ],
+      swiperOptions: { // 隱藏又出現會導致寬度計算有誤所以要observer刷新
+        observerParents: true,
+        observer: true
+      }
+    }
+  },
+  components: {
+    CommonGallary
+  },
+  methods: {
+    handleBannerClick () {
+      this.showGallary = true
+    },
+    handleGallarClick () {
+      this.showGallary = false
+    }
+  }
 }
 </script>
 
