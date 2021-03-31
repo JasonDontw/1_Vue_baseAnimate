@@ -2,14 +2,20 @@
   <div>
     <div class="title">熱銷推薦</div>
     <ul>
-      <li class="item border-bottom" v-for="item of list" :key="item.id"> <!--border-bottom為1像素邊框-->
-        <img class="item-img" :src="item.imgUrl"/>
-        <div class="item-info">
-          <p class="item-title">{{item.title}}</p>
-          <p class="item-desc">{{item.desc}}</p>
-          <button class="item-detail-button">查看詳情</button>
-        </div>
-      </li>
+        <router-link
+          class="item border-bottom"
+          v-for="item of list"
+          :key="item.id"
+          :to="'/detail/' + item.id"
+          tag="li"
+        >
+          <img class="item-img" :src="item.imgUrl"/>
+          <div class="item-info">
+            <p class="item-title">{{item.title}}</p>
+            <p class="item-desc">{{item.desc}}</p>
+            <button class="item-detail-button">查看詳情</button>
+          </div>
+        </router-link>
       <li class="item-all border-bottom">
         <button class="item-all-button">查看所有商品</button>
       </li>
