@@ -26,10 +26,18 @@ export default {
     HomeWeekend
   },
   mounted () {
+    this.lastCity = this.$store.state.city
     this.getHomeInfo()
+  },
+  activated () { //用於從新加載被Keep-alive的資料
+    if (this.lastCity !== this.$store.state.city) {
+      this.lastCity = this.$store.state.city
+      this.getHomeInfo()
+    }
   },
   data () {
     return {
+      lastCity: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
@@ -38,7 +46,7 @@ export default {
   },
   methods: {
     getHomeInfo () {
-      axios.get('/api/index.json') // 網址設定放於config/index.js的proxyTable中
+      axios.get('/api/index.json?city=' + this.$store.state.city) // 網址設定放於config/index.js的proxyTable中
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
