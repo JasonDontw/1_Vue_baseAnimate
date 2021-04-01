@@ -35,7 +35,9 @@ export default {
   },
   methods: {
     handleScroll () {
-      const top = document.documentElement.scrollTop
+      const top = document.documentElement.scrollTop || // 兼容性處理每個手機支援的函數不同
+                  document.body.scrollTop ||
+                  window.pageYOffset
 
       if (top > 60) {
         let opacity = top / 140
@@ -49,10 +51,10 @@ export default {
       }
     }
   },
-  activated () {
+  mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  deactivated () {
+  destroyed () {
     window.removeEventListener('scroll', this.handleScroll) // 因為此事件綁定在全局，所以結束時要解綁，不然可能會引響其他頁面
   }
 }
