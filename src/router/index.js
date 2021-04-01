@@ -21,5 +21,8 @@ export default new Router({
       name: 'Detail',
       component: Detail
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) { // 設定每次進入新頁面的畫面開始位置
+    return { x: 0, y: 0 }
+  }
 })

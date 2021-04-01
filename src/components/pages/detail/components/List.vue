@@ -6,7 +6,7 @@
         {{item.title}}
       </div>
       <div v-if="item.children" class="item-children">
-        <DetailList :list="item.children"></DetailList>
+        <DetailList :list="item.children"></DetailList> <!--自己使用自己不需再import-->
       </div>
     </div>
   </div>
