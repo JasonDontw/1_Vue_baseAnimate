@@ -51,6 +51,9 @@ export default {
   },
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScroll) // 因為此事件綁定在全局，所以結束時要解綁，不然可能會引響其他頁面
   }
 }
 </script>
